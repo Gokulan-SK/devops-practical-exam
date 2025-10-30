@@ -4,33 +4,36 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'node-18' // Assuming you used 'nodejs-18' to fix the last issue
+        // FIX: Reverted to 'nodejs-18' because the build said it expected it.
+        // Assuming your Global Tool Config is now fixed to use 'nodejs-18'
+        nodejs 'nodejs-18' 
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                // ... git command ...
+                // FIX: Added the necessary git step back in!
+                git branch: 'main', url: 'https://github.com/Gokulan-SK/devops-practical-exam.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                // FIX: Changed 'sh' to 'bat'
+                // ... (bat 'npm install')
                 bat 'npm install'
             }
         }
 
         stage('Build Application') {
             steps {
-                // FIX: Changed 'sh' to 'bat'
+                // ... (bat 'npm run build')
                 bat 'npm run build'
             }
         }
 
         stage('Archive Artifacts') {
             steps {
-                // Note: archiveArtifacts itself does not need sh/bat
+                // ... (archiveArtifacts)
                 archiveArtifacts artifacts: 'dist/**/*', fingerprint: true
             }
         }
