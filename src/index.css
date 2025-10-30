@@ -23,25 +23,41 @@ body {
 
 :root {
   /* 3 base colors (earthy, dark) */
-  --base-1: #0f1720; /* Deep Charcoal */
-  --base-2: #3b2f2f; /* Dark Wood / Espresso */
-  --base-3: #b65a2e; /* Burnt Sienna (accent) */
+  /* Core brand hues (used as the 'three colors') */
+  --base-1-dark: #0f1720; /* Deep Charcoal (dark bg) */
+  --base-2-dark: #3b2f2f; /* Dark Wood (dark cards) */
+  --base-3-dark: #b65a2e; /* Burnt Sienna (accent) */
 
-  /* Neutral text on dark surfaces (keeps palette constrained while ensuring legibility) */
+  /* Light-theme tints derived from the same hues to keep the 3-color constraint */
+  --base-1-light: #f4efe6; /* Warm Beige (light bg) */
+  --base-2-light: #efe5d8; /* Light Card */
+  --base-3-light: #9b4d2b; /* Accent in light theme (same hue family) */
+
+  /* Neutrals for text to ensure legibility on both themes (not counted as brand colors)
+     (kept minimal to respect the 3-color request while meeting accessibility) */
   --text-on-dark: #e9ecef;
+  --text-on-light: #2b2725;
+}
+/* Light theme variables (uses light tints derived from the 3 brand colors) */
+.light {
+  --color-bg-primary: var(--base-1-light);
+  --color-bg-card: var(--base-2-light);
+
+  --color-text-primary: var(--text-on-light);
+  --color-text-secondary: rgba(43, 39, 37, 0.85);
+
+  --color-accent: var(--base-3-light);
 }
 
-/* Apply the same earthy dark palette for both light/dark classes so the app consistently
-   uses the defined 3-color scheme (the JS hook can still toggle class names). */
-.light,
+/* Dark theme variables (original earthy dark palette) */
 .dark {
-  --color-bg-primary: var(--base-1);
-  --color-bg-card: var(--base-2);
+  --color-bg-primary: var(--base-1-dark);
+  --color-bg-card: var(--base-2-dark);
 
   --color-text-primary: var(--text-on-dark);
   --color-text-secondary: rgba(233, 236, 239, 0.85);
 
-  --color-accent: var(--base-3);
+  --color-accent: var(--base-3-dark);
 }
 
 /* Applying Colors to the HTML elements */
