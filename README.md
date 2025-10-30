@@ -44,6 +44,7 @@ The pipeline is defined in the **`Jenkinsfile`** and configured to run on a Wind
 ![Running Portfolio Application](proof/app.png)
 
 ### 2. Jenkins Build Success Console Output
-
+![Running Portfolio Application](proof/jenkins_success.png)
 
 ### 3. README Screenshot/Logs
+![Running Portfolio Application](proof/logs.png)
