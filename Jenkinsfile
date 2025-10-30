@@ -6,7 +6,7 @@ pipeline {
     tools {
         // FIX: Reverted to 'nodejs-18' because the build said it expected it.
         // Assuming your Global Tool Config is now fixed to use 'nodejs-18'
-        nodejs 'nodejs-18' 
+        nodejs 'node-18' 
     }
 
     stages {
