@@ -1,37 +1,36 @@
 // Jenkinsfile
+
 pipeline {
-    agent any // Specifies an available Jenkins executor
+    agent any
 
     tools {
-        // REQUIRED: Ensure Node.js is installed/configured in Jenkins Global Tools
-        nodejs 'node-18' // Replace 'node-18' with your configured Node.js installation name
+        nodejs 'node-18' // Assuming you used 'nodejs-18' to fix the last issue
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                // IMPORTANT: Replace with your actual GitHub HTTPS URL
-                git branch: 'main', url: 'https://github.com/Gokulan-SK/devops-practical-exam.git'
+                // ... git command ...
             }
         }
-        
+
         stage('Install Dependencies') {
             steps {
-                // Using Node.js tool defined above
-                sh 'npm install' 
+                // FIX: Changed 'sh' to 'bat'
+                bat 'npm install'
             }
         }
-        
+
         stage('Build Application') {
             steps {
-                // Creates the production ready 'dist' folder (Vite build)
-                sh 'npm run build' 
+                // FIX: Changed 'sh' to 'bat'
+                bat 'npm run build'
             }
         }
-        
+
         stage('Archive Artifacts') {
             steps {
-                // Archives the production output (Completes Task Step 3: Archive build artifacts)
+                // Note: archiveArtifacts itself does not need sh/bat
                 archiveArtifacts artifacts: 'dist/**/*', fingerprint: true
             }
         }
