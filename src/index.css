@@ -1,0 +1,58 @@
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* --- Global Reset and Typography --- */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* --- Color Variables for Earthy Theme --- */
+
+/*
+  Earthy Dark 3-Color Palette
+  - Palette uses exactly 3 base colors (base-1, base-2, base-3).
+  - base-1: Deep Charcoal  (app background / primary surface)
+  - base-2: Dark Wood     (cards / surfaces)
+  - base-3: Burnt Sienna  (accent / CTA)
+
+  Accessibility note: a neutral text color is used on top of dark backgrounds to ensure readable contrast
+  (this neutral is not counted as a separate brand color in the 3-color palette).
+*/
+
+:root {
+  /* 3 base colors (earthy, dark) */
+  --base-1: #0f1720; /* Deep Charcoal */
+  --base-2: #3b2f2f; /* Dark Wood / Espresso */
+  --base-3: #b65a2e; /* Burnt Sienna (accent) */
+
+  /* Neutral text on dark surfaces (keeps palette constrained while ensuring legibility) */
+  --text-on-dark: #e9ecef;
+}
+
+/* Apply the same earthy dark palette for both light/dark classes so the app consistently
+   uses the defined 3-color scheme (the JS hook can still toggle class names). */
+.light,
+.dark {
+  --color-bg-primary: var(--base-1);
+  --color-bg-card: var(--base-2);
+
+  --color-text-primary: var(--text-on-dark);
+  --color-text-secondary: rgba(233, 236, 239, 0.85);
+
+  --color-accent: var(--base-3);
+}
+
+/* Applying Colors to the HTML elements */
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* --- Utility Classes for Components --- */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
